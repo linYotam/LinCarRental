@@ -1,0 +1,103 @@
+<div id="wrapper" class="add-form">
+  <!--Page Title-->
+  <div class="table-header"><p class="title-text">Add a new Car</p></div>
+  <div class="fields-form">
+
+    <!--Set page as material card-->
+    <mat-card-content>
+
+      <!--Set as form-->
+      <form class="my-form">
+
+        <!--Car Number--> 
+        <mat-form-field class="full-width" >
+            <mat-label>Car Number</mat-label>
+            <input  matInput    #input [errorStateMatcher]="matcher" [formControl]="CarNumberFormControl" name="CarNumber" maxlength="8" [(ngModel)]="rentCar.carNumber" class="full-width" required>
+            <mat-hint align="end">{{input.value?.length || 0}}/8</mat-hint>
+            <!--Show error if field is not only digits-->
+            <mat-error *ngIf="CarNumberFormControl.hasError('pattern')">
+              <strong>Digits only</strong>
+            </mat-error>
+            <!--Show error if field is empty-->
+            <mat-error *ngIf="CarNumberFormControl.hasError('required')">
+              Car Number is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!--Mileage-->
+        <mat-form-field class="full-width" >
+          <mat-label>Mileage</mat-label>
+          <input matInput  type="text" [ngModel]="rentCar.mileage| numberPipe"  [errorStateMatcher]="matcher"   [formControl]="MileageFormControl"  name="Mileage" required
+          (ngModelChange)="replaceMileage($event)"/>
+          <!--Show error if there're no digits-->
+          <mat-error *ngIf="MileageFormControl.hasError('pattern')">
+            <strong>Digits only</strong>
+          </mat-error>
+          <!--Show error if there is no value-->
+          <mat-error *ngIf="MileageFormControl.hasError('required')">
+            Mileage is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!--Car Type-->
+        <mat-form-field class="full-width">
+          <mat-label>Type</mat-label>
+          <mat-select  name="Type" [(ngModel)]="rentCar.typeId" >
+            <!--Ceate drop down list-->
+            <mat-option *ngFor="let carType of carsType" [value]="carType.typeId" >
+              {{carType.manufacturer}} {{carType.model}} {{carType.Year}}  - {{carType.gear}} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--Proper -> Y - if car has no problems-->
+        <mat-form-field class="full-width">
+          <mat-label>Proper</mat-label>
+          <mat-select   name="Proper" [(ngModel)]="rentCar.proper">
+            <!--Ceate drop down list-->
+            <mat-option *ngFor="let status of YesNo" [value]="status[0]">
+              {{status}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--Available -> Y - if car available for rent-->
+        <mat-form-field class="full-width">
+          <mat-label>Available</mat-label>
+          <mat-select name="Available" [(ngModel)]="rentCar.available">
+            <!--Ceate drop down list-->
+            <mat-option *ngFor="let status of YesNo" [value]="status[0]">
+              {{status}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--Branch-->
+        <mat-form-field class="full-width">
+          <mat-label>Branch</mat-label>
+          <mat-select name="Branch" [(ngModel)]="rentCar.branchId">
+            <mat-option *ngFor="let branch of branches" [value]="branch.branchId">
+              {{branch.city}} , {{branch.address}} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <!--Add new car Button-->
+      <button  mat-raised-button color="primary"  (click)="addCarStock()" >Add New Car</button>
+      <!--Close dialog page-->
+      <button mat-raised-button id="close-btn" color="warn" (click)="dialog.closeAll()">Close</button>
+    </mat-card-actions>
+  </div>
+  <!--Car Image-->
+  <div class="picture-div">
+    <img class="profile-picture" *ngIf="rentCar.image"  [src]="rentCar.image" id="selected-image"/>
+    <button id="btn-upload-pic" class="file-button" mat-raised-button (click)="uploadFile()" color="primary">Car Image</button>
+  </div>
+  <input [hidden]="true"  id="btn-uploadfile" type='file'   #fileInput (change)="onSelectFile($event)">
+</div>
+    
+    

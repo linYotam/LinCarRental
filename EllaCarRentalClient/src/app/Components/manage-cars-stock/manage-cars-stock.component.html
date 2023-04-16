@@ -1,0 +1,159 @@
+<!--Title-->
+<div class="table-header"><p class="title-text">Cars List</p></div>
+
+<!--Cars table-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--Car number column-->
+  <ng-container matColumnDef="CarNumber">
+    <th mat-header-cell *matHeaderCellDef>Car Number</th>
+    <td mat-cell *matCellDef="let element">
+      {{element.carNumber}}
+    </td>
+  </ng-container>
+
+  <!--Manufacturer column-->
+  <ng-container matColumnDef="Manufacturer">
+    <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field class="form-field-manufacturer">
+          <!--Manufacturer Drop down list by car type-->
+            <mat-select [disabled]="element.typeId" [(ngModel)]="element.typeId">
+              <mat-option *ngFor="let carType of carsType" [value]="carType.typeId">
+                {{carType.manufacturer}} 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Model column-->
+  <ng-container matColumnDef="Model">
+    <th mat-header-cell *matHeaderCellDef>Model</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field class="form-field-model">
+          <!--Model Drop down list by car type-->
+            <mat-select [disabled]="element.typeId" [(ngModel)]="element.typeId">
+              <mat-option *ngFor="let carType of carsType" [value]="carType.typeId">
+                {{carType.model}} 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Year column-->
+  <ng-container matColumnDef="Year">
+    <th mat-header-cell *matHeaderCellDef>Year</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field class="form-field-year">
+          <!--Year Drop down list by car type-->
+            <mat-select [disabled]="element.typeId" [(ngModel)]="element.typeId">
+              <mat-option *ngFor="let carType of carsType" [value]="carType.typeId">
+                {{carType.year}} 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Mileage column-->
+  <ng-container matColumnDef="Mileage">
+    <th mat-header-cell *matHeaderCellDef>Mileage</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field class="form-field-mileage">
+            <!--use number pipe to show minimum of 2 digits before the decimal point-->
+            <input matInput [disabled]="element.isEdit" type="text" [ngModel]="element.carMileage | number: '2.'" [ngModelOptions]="{updateOn:'blur'}"  
+            (ngModelChange)="element.mileage=$event"  />
+        </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--Proper column-->
+  <ng-container matColumnDef="Proper">
+    <th mat-header-cell *matHeaderCellDef>Proper</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-proper">
+        <!--Proper Drop down list (Yes/No)-->
+        <mat-select [disabled]="element.isEdit" [(ngModel)]="element.proper">
+          <mat-option *ngFor="let status of YesNo" [value]="status[0]">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Available column-->
+  <ng-container matColumnDef="Available">
+    <th mat-header-cell *matHeaderCellDef>Available</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-available">
+        <!--Availbale Drop down list (Yes/No)-->
+        <mat-select [disabled]="element.isEdit" [(ngModel)]="element.available">
+          <mat-option *ngFor="let status of YesNo" [value]="status[0]">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Branch ID column-->
+  <ng-container matColumnDef="BranchID">
+    <th mat-header-cell *matHeaderCellDef>Branch</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field class="form-field-branch">
+          <!--Branch ID Drop down list by branches-->
+            <mat-select [disabled]="element.isEdit" [(ngModel)]="element.branchId">
+              <mat-option *ngFor="let branch of branches" [value]="branch.branchId">
+                {{branch.city}} , {{branch.address}} 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Car Image column-->
+  <ng-container matColumnDef="Image">
+    <th mat-header-cell *matHeaderCellDef>Image</th> 
+    <td mat-cell *matCellDef="let element"> 
+      <!--If there's no image -> show noPhote image-->
+      <img  [src]="element.image ? element.image : './assets/images/noPhoto.jpg'" [matTooltipDisabled]="element.isEdit" matTooltip="Click to update"  class="car-image"  type='file'  (click)="!element.isEdit && fileInput.click()"  /> 
+      <input hidden (change)="onSelectFile($event,element)" #fileInput type="file" id="file">
+    </td> 
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>
+        <!--Add new car button-->
+      <button mat-icon-button class="add-icon" color="primary">
+        <mat-icon mat-dialog-close matTooltip="Add new car" class="add-icon" (click)="addCarToStock()">add_box</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let element">
+        <!--Delete car button-->
+      <button matTooltip="Delete car" mat-icon-button color="warn" (click)="deleteCarToStock(element)">
+        <mat-icon>delete</mat-icon>
+      </button> 
+        <!--Edit car button-->
+      <button mat-icon-button class="edit-icon" color="primary">
+        <mat-icon matSuffix  matTooltip="Edit car" *ngIf="!element.icon" class="edit-icon" (click)="element.isEdit = !element.isEdit;element.icon = true">edit
+        </mat-icon>
+          <!--Update edited car-->
+        <mat-icon matSuffix matTooltip="Update car" *ngIf="element.icon" (click)="updateCarToStock(element)">done_outline</mat-icon>
+          <!--Cancel edit-->
+        <mat-icon matSuffix  matTooltip="Close" *ngIf="element.icon" (click)="element.isEdit = !element.isEdit;element.icon = false">close
+        </mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+  <!--Define the row templates-->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> 
+
+<!--Set page numbering-->
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>

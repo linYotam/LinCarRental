@@ -1,0 +1,190 @@
+
+<mat-toolbar color="primary" class="header">
+  <span class="left-side">
+    <!--Toggle menu - show all website functions -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" title="Menu" class="mainButton">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <!--Home button -->
+      <button mat-menu-item [routerLink]="'/home'">
+        <mat-icon>home</mat-icon>
+        <span>Home</span> 
+      </button>
+      <!--Rent a car button -> show only if user is not admin or manager -->
+      <button *ngIf="getRole() != 'A' && getRole() != 'M'" mat-menu-item [routerLink]="'/Cars/selectCar'">
+        <mat-icon>directions_car</mat-icon>
+        <span class="menuWidth">Rent a Car</span>
+      </button>
+      <!--Orders button -> show only when user is client and have orders -->
+      <button mat-menu-item *ngIf="getNumberOfOrders() && getRole() === 'C'" routerLink="/Managment/MyOrders">
+        <mat-icon matBadge="{{getNumberOfOrders()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+        <span class="menuWidth">My Orders</span>
+      </button>
+      <!--Register button -> Show only when there is no loged in user -->
+      <button *ngIf="!getUserName()" mat-menu-item [routerLink]="'/register'">
+        <mat-icon>receipt</mat-icon>
+        <span>Register</span>
+      </button>
+      <!--Login button -> Show only when there is no loged in user -->
+      <button *ngIf="!getUserName()" mat-menu-item [routerLink]="'/login'">
+        <mat-icon>account_box</mat-icon>
+        <span>Login</span>
+      </button>
+      <!--Managment button -> Show only when user is manager or admin -> when clicked - show sub menu of managment functionality -->
+      <button mat-menu-item *ngIf="getRole() === 'M' || getRole() === 'A'" [matMenuTriggerFor]="Managment">
+        <mat-icon>settings</mat-icon>
+        <span class="menuWidth">Managment</span>
+      </button>
+      <!--Managment menu -> show functions according to role -->
+      <mat-menu class="rightMenu" #Managment="matMenu">
+        <!--Users button -> Show only when user role is manager -> when clicked route to users page -->
+        <button mat-menu-item *ngIf="getRole() === 'M'" routerLink="/Managment/Users">
+          <mat-icon>people</mat-icon> 
+          <span class="menuWidth">Users</span>
+        </button>
+        <!--Return car button -> Show only when user role is admin -> when clicked route to Return car page -->
+        <button mat-menu-item *ngIf="getRole() === 'A'" routerLink="/Managment/Return">
+          <mat-icon>drive_eta</mat-icon> 
+          <span class="menuWidth">Return Car</span> 
+        </button>
+        <!--Branches button -> Show only when user role is Manager -> when clicked route to Branches page -->
+        <button mat-menu-item *ngIf="getRole() === 'M'" routerLink="/Managment/Branches">
+          <mat-icon>room</mat-icon> 
+          <span class="menuWidth">Branches</span>
+        </button>
+        <!--Cars button -> Show only when user role is Manager -> when clicked open sub menu Cars -->
+        <button *ngIf="getRole() === 'M'" mat-menu-item [matMenuTriggerFor]="Cars">
+          <mat-icon>drive_eta</mat-icon> 
+          <span class="menuWidth">Cars</span>
+        </button>
+        <mat-menu #Cars="matMenu"> 
+          <!--Car types button -> when clicked route to car types page -->
+          <button mat-menu-item  routerLink="/Managment/Cars/Types">
+            <mat-icon>bubble_chart</mat-icon> 
+            <span class="menuWidth">Types</span>
+          </button>
+          <!--Stock button -> when clicked route to Stock page -->
+          <button mat-menu-item  routerLink="/Managment/Cars/Stock">
+            <mat-icon>storage</mat-icon> 
+            <span class="menuWidth">Stock</span>
+          </button>
+          <!--Orders button -> when clicked route to Orders page -->
+          <button mat-menu-item  routerLink="/Managment/Cars/Orders">
+            <mat-icon>sell</mat-icon> 
+            <span class="menuWidth">Orders</span>
+          </button>
+        </mat-menu>
+      </mat-menu>
+      <!--Contact us button -> when clicked route to Contact us page -->
+      <button mat-menu-item [routerLink]="'/contact'">
+        <mat-icon>support_agent</mat-icon>
+        <span>Contact Us</span>
+      </button>
+      <!--My Account button -> Show only when user have role -> when clicked route to Account page -->
+      <button mat-menu-item *ngIf="getRole()" [routerLink]="'/account'">
+        <mat-icon>face</mat-icon> 
+        <span class="menuWidth">My Account</span>
+      </button>
+      <!--Sign Out button -> Show only when user have role -> when clicked clear user session to log out -->
+      <button *ngIf="getUserName()" (click)="signOut()" mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </mat-menu>
+    <!--Home button route to home page -->
+    <a  mat-button  routerLink="/home">Home</a>
+    <!--Contact Us button route to Contact Us page -->
+    <a mat-button routerLink="/contact">Contact Us</a>
+    <!--Rent a car button -> show only when user role is not admin or manager -> when clicked route to Select Car page -->
+    <a  mat-button *ngIf="getRole() != 'A' && getRole() != 'M'" routerLink="/Cars/selectCar">Rent a Car</a>
+  </span>
+  <span>
+    <!--Company Logo Image -->
+    <img src='./assets/images/EllaLogo.png' class="imageLogo"/> 
+  </span>
+  <span class="right-side">
+    <div *ngIf="!getUserName()"> 
+      <!--Register and login buttons -> show only when user have role -->
+      <a  mat-button  routerLink="/register">Register</a>
+      <a  mat-button  routerLink="/login">Login</a>
+    </div> 
+    <div *ngIf="getRole()">
+      <!--Show managment button if user role is manager or admin -->
+      <span class="shopping-cart" *ngIf="getRole() === 'M' || getRole() === 'A'" matTooltip="Managment">
+        <button mat-icon-button *ngIf="getRole() === 'M' || getRole() === 'A'" [matMenuTriggerFor]="Managment"> 
+          <mat-icon>settings</mat-icon>
+        </button>
+      </span>
+      <!--Home button route to home page -->
+      <mat-menu class="rightMenu" #Managment="matMenu">
+        <!--Users button -> Show only when user role is manager -> when clicked route to users page -->
+        <button mat-menu-item *ngIf="getRole() === 'M'" routerLink="/Managment/Users">
+          <mat-icon>people</mat-icon> 
+          <span class="menuWidth">Users</span>
+        </button>
+        <!--Branches button -> Show only when user role is Manager -> when clicked route to Branches page -->
+        <button mat-menu-item *ngIf="getRole() === 'M'" routerLink="/Managment/Branches">
+          <mat-icon>room</mat-icon> 
+          <span class="menuWidth">Branches</span>
+        </button>
+        <!--Return a car button -> show only when user role is admin -> when clicked route to return car page -->
+        <button mat-menu-item *ngIf="getRole() === 'A'" routerLink="/Managment/Return">
+          <mat-icon>drive_eta</mat-icon> 
+          <span class="menuWidth">Return Car</span>
+        </button>
+        <!--Cars button -> Show only when user role is manager -> when clicked open sub menu cars -->
+        <button *ngIf="getRole() === 'M'" mat-menu-item [matMenuTriggerFor]="Cars">
+          <mat-icon>drive_eta</mat-icon> 
+          <span class="menuWidth">Cars</span>
+        </button>
+        <mat-menu #Cars="matMenu"> 
+          <!--Car types button -> when clicked route to car types page -->
+          <button mat-menu-item  routerLink="/Managment/Cars/Types">
+            <mat-icon>bubble_chart</mat-icon> 
+            <span class="menuWidth">Types</span>
+          </button>
+          <!--Stock button -> when clicked route to Stock page -->
+          <button mat-menu-item  routerLink="/Managment/Cars/Stock">
+            <mat-icon>storage</mat-icon> 
+            <span class="menuWidth">Stock</span>
+          </button>
+          <!--Orders button -> when clicked route to Orders page -->
+          <button mat-menu-item  routerLink="/Managment/Cars/Orders">
+            <mat-icon>sell</mat-icon> 
+            <span class="menuWidth">Orders</span>
+          </button>
+        </mat-menu>
+      </mat-menu>
+      <!--Shopping cart button -> show only when user role is client -> when clicked route to My Orders page -->
+      <span class="shopping-cart" *ngIf="getRole() === 'C'" matTooltip="Shopping Cart">
+        <button mat-icon-button routerLink="/Managment/MyOrders"> 
+          <!--Show badge of number of orders-->
+          <mat-icon matBadge="{{getNumberOfOrders()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+        </button> 
+      </span>
+      <!--Account sub menu -->
+      <span matTooltip="My Account">
+        <button mat-icon-button  [matMenuTriggerFor]="accountMenu">
+        <mat-icon>account_circle</mat-icon>
+        </button>
+      </span>
+      <mat-menu #accountMenu="matMenu" class="rightMenu" [overlapTrigger]="false">
+        <span class="menuHeader">Hello {{getUserName()}}</span>
+        <hr>
+        <!--My Account button -> Show only when user have role -> when clicked route to Account page -->
+          <button mat-menu-item [routerLink]="'/account'">
+            <mat-icon>face</mat-icon> 
+            <span class="menuWidth">My Account</span>
+          </button>
+          <!--Sign Out button -> Show only when user have role -> when clicked clear user session to log out -->
+          <button mat-menu-item (click)="signOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Sign Out</span> 
+          </button>
+      </mat-menu> 
+    </div>
+  </span>
+</mat-toolbar>
+

@@ -1,0 +1,71 @@
+<div id="wrapper">
+
+  <!--Title-->
+  <mat-card-header>
+    <div class="table-header"><p class="title-text">Add new Order</p></div>
+  </mat-card-header>
+
+  <!--New order form-->
+  <mat-card-content>
+    <form class="my-form">
+
+      <!--Car number-->
+      <mat-form-field class="full-width">
+        <mat-label>Car Number</mat-label>
+        <mat-select name="CarNumber" [(ngModel)]="carOrder.carNumber">
+          <!--Set drop down list -> choose by car info -->
+          <mat-option *ngFor="let carO of allCarsType" [value]="carO.carNumber">
+            {{carO.manufacturer}} {{carO.model}} {{carO.year}} {{carO.gear}} - {{carO.carNumber}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--User-->
+      <mat-form-field class="full-width">
+        <mat-label>Rent By</mat-label>
+        <mat-select name="UserID" [(ngModel)]="carOrder.userId">
+          <!--Set drop down list -> choose by user info -->
+          <mat-option *ngFor="let user of allUsers" [value]="user.userId">
+            {{user.firstName}} {{user.lastName}} - {{user.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--Start time -> order start date -->
+      <mat-form-field>
+          <mat-label>Start Time</mat-label>
+        <input matInput name="start" [matDatepicker]="pickerStart"  [(ngModel)]="carOrder.startTime">
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker [(ngModel)]="carOrder.startTime" ngDefaultControl #pickerStart>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <!--End time -> order last date of rental -->
+      <mat-form-field>
+          <mat-label>End Time</mat-label>
+        <input matInput  name="end" [matDatepicker]="pickerEnd" [(ngModel)]="carOrder.endTime">
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker  [(ngModel)]="carOrder.endTime" ngDefaultControl #pickerEnd>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <!--Return time -> actual return date of rented car  -->
+      <mat-form-field>
+          <mat-label>Return Time</mat-label>
+        <input matInput name="return" [matDatepicker]="pickerReturn" [(ngModel)]="carOrder.returnTime">
+        <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
+        <mat-datepicker [(ngModel)]="carOrder.returnTime" ngDefaultControl #pickerReturn>
+        </mat-datepicker>
+      </mat-form-field> 
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <!--Add new car order button -->
+    <button mat-raised-button color="primary" (click)="addOrder()">Add New Car</button>
+    <!--Close dialog page -->
+    <button mat-raised-button id="close-btn" color="warn" (click)="dialog.closeAll()">Close</button>
+  </mat-card-actions>
+
+</div>

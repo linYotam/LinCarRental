@@ -1,0 +1,103 @@
+<!--Title-->
+<div class="table-header"><p class="title-text">Cars Type List</p></div>
+
+<!--Cars Types table-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--Manufacturer column-->
+  <ng-container matColumnDef="Manufacturer">
+    <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+    <td mat-cell *matCellDef="let element"> 
+      <mat-form-field>
+          <input [disabled]="element.isEdit"  matInput [value]="element.manufacturer" [(ngModel)]="element.manufacturer">
+        </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--Model column-->
+  <ng-container matColumnDef="Model">
+    <th mat-header-cell *matHeaderCellDef>Model</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+            <input [disabled]="element.isEdit"  matInput [value]="element.model" [(ngModel)]="element.model">
+          </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--Gear column-->
+  <ng-container matColumnDef="Gear">
+    <th mat-header-cell *matHeaderCellDef>Gear</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field >
+          <!--Gear drop down list -> automatic or manual -->
+            <mat-select [disabled]="element.isEdit" [(ngModel)]="element.gear"  >
+              <mat-option  *ngFor="let gear of gears" [value]="gear[0]">
+                {{gear}}
+              </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </td>
+  </ng-container>
+
+  <!--Year column-->
+  <ng-container matColumnDef="Year">
+    <th mat-header-cell *matHeaderCellDef>Year</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+            <input [disabled]="element.isEdit"  matInput [value]="element.year" [(ngModel)]="element.year">
+          </mat-form-field>  
+      </td>
+  </ng-container>
+
+  <!--Cost Per Day column-->
+  <ng-container matColumnDef="CostPerDay">
+    <th mat-header-cell *matHeaderCellDef>Cost Per Day</th>
+    <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+            <input matInput [disabled]="element.isEdit" type="text" [ngModel]="element.costPerDay | currency:'USD':'symbol'" [ngModelOptions]="{updateOn:'blur'}" 
+            (ngModelChange)="element.costPerDay=$event.replace('$','')"/>
+          </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--Cost Per Day Delay column-->
+  <ng-container matColumnDef="CostPerDayDelay">
+    <th mat-header-cell *matHeaderCellDef>Cost Per Day Delay</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field>
+        <!--currency pipe - usd symbol -->
+        <input matInput [disabled]="element.isEdit" type="text" [ngModel]="element.costPerDayDelay | currency:'USD':'symbol'" [ngModelOptions]="{updateOn:'blur'}" 
+        (ngModelChange)="element.costPerDayDelay=$event.replace('$','')"/>
+      </mat-form-field> 
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef> 
+        <!--Add new car type button-->
+          <button matTooltip="Add car type" mat-icon-button color="primary" >
+              <mat-icon class="add-icon" mat-dialog-close (click)="addCarType()">add_box</mat-icon>
+            </button>
+      </th>
+      <td mat-cell *matCellDef="let element"> 
+        <!--Delete car type-->
+        <button mat-icon-button matTooltip="Delete car type" color="warn" (click)="deleteCarType(element)">
+          <mat-icon >delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" >
+          <!--Edit car type-->
+          <mat-icon  matSuffix matTooltip="Edit car type" class="edit-icon"  *ngIf="!element.icon"  (click)="element.isEdit = !element.isEdit;element.icon = true">edit</mat-icon>
+          <!--Update car type-->
+          <mat-icon  matSuffix matTooltip="Update car type"  *ngIf="element.icon"   (click)="updateCarType(element)" >done_outline</mat-icon>
+          <!--Close edit -->
+          <mat-icon  matSuffix matTooltip="Close" *ngIf="element.icon" (click)="element.isEdit = !element.isEdit;element.icon = false">close</mat-icon>
+        </button>
+      </td> 
+    </ng-container>
+
+  <!--Define the row templates-->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!--Set page numbering-->
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator> 

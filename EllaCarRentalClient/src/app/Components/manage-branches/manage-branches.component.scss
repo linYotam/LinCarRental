@@ -1,0 +1,98 @@
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:  2em;
+    border-collapse: collapse;
+  }
+  
+  .mat-paginator{
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+
+  .mat-icon  {
+      padding: 0.25em;
+  }
+
+  .mat-row:hover {
+    background-color: lightgray;
+  }
+
+  .mat-column-Address {
+    width: 200px;
+    max-width: 200px;
+  }
+
+  .form-field-address {
+    width: 90%;
+  }
+
+  .mat-column-Latitude {
+    width: 100px;
+    max-width: 100px;
+  }
+
+  .form-field-latitude {
+    width: 90%;
+  }
+
+  .mat-column-Longitude {
+    width: 100px;
+    max-width: 100px;
+  }
+ 
+  .form-field-longitude {
+    width: 90%;
+  }
+
+  .mat-column-City {
+    width: 150px;
+    max-width: 150px;
+  }
+
+  .form-field-city {
+    width: 90%;
+  }
+
+  .mat-column-Name {
+    width: 150px;
+    max-width: 150px;
+  }
+
+  .form-field-name {
+    width:90%;
+  }
+
+  .mat-column-Actions {
+    width: 10%;
+    max-width: 10%;
+  }
+
+  .table-header {
+    background-color: coral;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    height: 5%;
+    display: table; 
+  }
+
+  .title-text {
+    font-size: 30px;
+    font-family: fantasy;
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell; 
+  }
+
+  .add-icon {
+    color: green;
+  }
+
+  .edit-icon {
+    color: black;
+  }
+  

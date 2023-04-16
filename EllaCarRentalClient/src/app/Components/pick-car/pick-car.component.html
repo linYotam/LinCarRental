@@ -1,0 +1,111 @@
+<mat-drawer-container class="pick-car-container" >
+  <mat-drawer-content>
+    <div class="wrapper-page">
+
+      <!--Filter panel-->
+      <mat-expansion-panel class="filter" expanded >
+
+        <mat-expansion-panel-header>
+          <!--panel Title-->
+          <mat-panel-title>
+            Let us help you find your perfect car
+            <mat-icon class="headerIcon">directions_car</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="btn-area">
+          <!--Clear filter-->
+          <button mat-raised-button (click)="clearFilterFields(pickCarForm)" class="filter-btn">Clear Filter</button>
+          <!--Show favorite section-->
+          <button mat-raised-button *ngIf="getUserId()" #favoriteBtn class="fav-btn" (click)="toggleDrawer(drawer)" >{{favoriteButtonText}}</button>
+        </div>
+
+
+        <!--Filter form fields-->
+        <form [formGroup]="formdata" #pickCarForm="ngForm">
+
+          <!--Date range-->
+          <mat-form-field>
+            <input matInput
+                placeholder="Choose a date Range"
+                [satDatepicker]="picker" 
+                formControlName="dateControl"
+                [(ngModel)]="dateValue"
+                [min]="currentDate"
+                (dateChange)="calculateDaysDiff($event.value)">
+              <sat-datepicker  #picker [rangeMode]="true"></sat-datepicker>
+              <sat-datepicker-toggle matSuffix  [for]="picker"></sat-datepicker-toggle>
+          </mat-form-field>
+
+          <!--Gear-->
+          <mat-form-field >
+            <mat-select placeholder="Gear" formControlName="gearControl" (selectionChange)="updateGear($event.value)">
+              <mat-option  *ngFor="let gear of gears" [value]="gear">
+                {{gear}}
+              </mat-option>
+            </mat-select> 
+          </mat-form-field>
+
+          <!--Year-->
+          <mat-form-field >
+            <mat-select placeholder="Year" formControlName="yearControl" (selectionChange)="updateManufacturerByYearAndGear($event.value)">
+              <mat-option *ngFor="let year of years" [value]="year">
+                {{year}}
+              </mat-option>
+            </mat-select> 
+          </mat-form-field>
+
+          <!--Manufacturer-->
+          <mat-form-field >
+            <mat-select placeholder="Manufacturer" formControlName="manufacturerControl" (selectionChange)="getModelByManufacturer($event.value)">
+              <mat-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer">
+                {{manufacturer}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!--Model-->
+          <mat-form-field>
+            <mat-select  placeholder="Model" formControlName="modelControl" (selectionChange)="updateModel($event.value)" >
+              <mat-option *ngFor="let model of models"  [value]="model">
+                {{model}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!--Search field with autocomplete-->
+          <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input type="text"
+                   placeholder="Write something..."
+                   matInput
+                   [formControl]="myControl"
+                   formControlName = "searchControl"
+                   [matAutocomplete]="auto" #searchInput>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <!--Search button-->
+          <button mat-raised-button (click)="search(searchInput.value)" class="search-btn">Search</button>
+        </form>
+      </mat-expansion-panel>
+
+      <!--List of car cards for rent-->
+      <div class="carsTable"> 
+        <app-car-card [carsInput]="allCarsType"  [daysRange]="daysRange" [filter]="filter"  [gear]="gear" [manufacturer]="manufacturer" [model]="model" [year]="year" [rentPeriod]="rentPeriod" [favoriteIcon]="favoriteIcon" (favoriteEvent)="addToFavoriteList($event)" (removeFavoriteEvent)="removeFromFavoriteList($event)"></app-car-card>
+      </div>
+    </div> 
+  </mat-drawer-content> 
+
+  <!--side drawer with list of favorite cars-->
+  <mat-drawer #drawer class="favorite-sidenav" mode="side">
+    <p class="side-bar-title">Favorite Cars</p>
+    <mat-divider class="title-divider" [inset]="false"></mat-divider>
+    <app-mini-car-card [favoriteCars]="favoriteCarsList" [rentPeriod]="rentPeriod" (removeFavoriteEvent)="removeFromFavoriteList($event)"></app-mini-car-card>
+  </mat-drawer>
+  
+</mat-drawer-container>

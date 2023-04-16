@@ -1,0 +1,94 @@
+.register {
+  background: linear-gradient(
+    to right, 
+    hsl(231,48%,48%),  
+    hsl(350,48%,48%)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+  margin-top: -1%;
+}
+
+.register-form {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 50%;
+  padding: 20px;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.fields-form {
+  float: left;
+  width: 50%;
+}
+
+.picture-div {
+  width: 50%;
+  float: right;
+}
+
+.profile-picture {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height:300px;
+  background-size: contain;
+  border-radius: 1em;
+  margin-left: 20%;
+  margin-top: 10%; 
+  border: solid 1px black;
+} 
+
+.file-button {
+  position: relative;
+  z-index: 1;
+  margin-left: 37%;
+  margin-top: 1%;
+}
+
+.registerButton {
+  margin-top: 3%;
+  margin-left: 4% !important; 
+}  
+
+.my-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+   
+.full-width {
+  width: 100%;
+}
+
+:host {
+  display: flex;
+  justify-content: center;  
+  margin: 100px 0px;
+}
+  
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+  
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-radio-button{
+    padding: 1%;
+}
+
+#btn-upload-pic{
+  margin-bottom: 5%;
+}
+
+#close-btn{
+  margin-left: 1%;
+}

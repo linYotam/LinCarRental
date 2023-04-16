@@ -1,0 +1,117 @@
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:  2em;
+    border-collapse: collapse;
+  }
+  
+  .mat-paginator{
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+
+  .mat-icon  {
+      padding: 0.25em;
+  }
+
+  .mat-row:hover {
+    background-color: lightgray;
+  }
+
+  ::ng-deep .mat-tooltip{
+    background-color: darkblue !important;
+    font-size: 80% !important;
+  }
+
+  .mat-column-FirstName {
+    width: 180px; 
+    max-width: 180px;
+  }
+
+  .form-field-firstName {
+    width: 85%;
+  }
+
+  .mat-column-LastName {
+    width: 180px; 
+    max-width: 180px;
+  }
+
+  .form-field-lastName {
+    width: 85%;
+  } 
+
+  .mat-column-UserName {
+    width: 180px;
+    max-width: 180px;
+  }
+
+  .form-field-userName {
+    width: 85%;
+  }
+
+  .mat-column-ID {
+    width: 100px;
+    max-width: 100px;
+  }
+
+  .mat-column-DateOfBirth {
+    width: 150px;
+    max-width: 150px; 
+  }
+
+  .form-field-dateOfBirth {
+    width: 80%;
+  }
+
+  .mat-column-Gender {
+    width: 120px;
+    max-width: 120px;
+  }
+
+  .form-field-gender {
+    width: 80%;
+  }
+
+  .mat-column-Email {
+    width: 250px;
+    max-width: 250px;
+  }
+
+  .form-field-email {
+    width: 90%;
+  }
+
+  .mat-column-RoleType {
+    width: 150px;
+    max-width: 150px;
+  }
+
+  .form-field-roleType {
+    width: 80%;
+  }
+
+  .mat-column-Image {
+    width: 100px;
+    max-width: 100px;
+    text-align: center;
+  }
+
+  .add-icon {
+    color: green;
+  }
+
+  .edit-icon {
+    color: black;
+  }
+
+  .user-image {
+    width: 45px;
+    margin-top: 2px;
+  }
+
+  td.mat-cell:last-of-type {
+    padding: 0px !important;
+  }

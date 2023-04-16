@@ -1,0 +1,91 @@
+<!--Header section from search car to return by car number-->
+<div class="return-header">
+    <div class="filter">
+        <div class="add-row"></div>
+        <div class="panel-text">
+            <span>Search for a rented car to return</span>
+        </div>
+        <div class="car-number-search">
+                <mat-label class="car-number-label">Car Number: </mat-label>
+                <input matInput class="search-car-input" placeholder="" #carNumber (input)="SelectedValue($event.target.value)" required>
+                <button mat-raised-button (click)="searchCar()" color="primary">Search</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <!--Show car information-->
+    <mat-card *ngIf="showCards" class="mat-card">
+        <mat-card-header class="card-header">
+          <mat-card-title class="title-text">Car Inforamtion</mat-card-title>
+        </mat-card-header>
+        <br><br><br>
+        <img mat-card-image src="{{order.carImage}}">
+        <mat-card-content class="info-content">
+            <br><br>
+            <span class="text-label">Manufacturer:</span><span> {{order.manufacturer}}</span>
+            <br><br><br>
+            <span class="text-label">Model:</span><span> {{order.model}}</span>
+            <br><br><br>
+            <span class="text-label">Year:</span><span> {{order.year}}</span>
+            <br><br><br>
+            <span class="text-label">Gear: </span><span [innerHTML]="order.gear === 'A' ? 'Automatic' : 'Manually' " ></span>
+        </mat-card-content>   
+    </mat-card>
+
+    <!--Show rental information--> 
+    <mat-card *ngIf="showCards" class="mat-card"> 
+        <mat-card-header class="card-header">
+            <mat-card-title class="title-text">Rental Inforamtion</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="info-content">
+            <br><br><br>
+            <span class="text-label">Car Number:</span><span> {{order.carNumber | CarNumber}}</span>
+            <br><br><br>
+            <span class="text-label">Cost Per Day:</span><span> {{order.costPerDay | currency }}</span>
+            <br><br><br>
+            <span class="text-label">Cost Per Day Delay:</span><span> {{order.costPerDayDelay | currency}}</span>
+            <br><br><br>
+            <span class="text-label">Start Date:</span><span> {{order.startTime}}</span>
+            <br><br><br>
+            <span class="text-label">End Date:</span><span> {{order.endTime}}</span>
+            <br><br><br>
+            <span class="text-label">Return Date:</span><span> {{returnDate}}</span>
+            <br><br><br>
+            <span class="text-label">Total Cost:</span><span> {{totalCost | currency}}</span>
+            <br><br><br>
+            <span class="text-label">Is the vehicle is free of any major defects:</span>
+            <select #proper class="proper" (change)="updateProper(proper.value)" [value]="propers[0].value">
+                <option *ngFor="let proper of propers" >{{proper.viewValue}}</option>
+            </select>
+            <br><br><br>
+        </mat-card-content>
+        <mat-card-actions>
+            <button *ngIf="showButton" mat-raised-button (click)="returnCar()" class="return-button">Return Car</button>
+        </mat-card-actions>
+    </mat-card> 
+ 
+    <!--Show customer information-->
+    <mat-card *ngIf="showCards" class="mat-card"> 
+        <mat-card-header class="card-header">
+            <mat-card-title class="title-text">Customer Inforamtion</mat-card-title>
+          </mat-card-header>
+          <br><br><br>
+          <img mat-card-image src="{{order.userImage}}">
+          <mat-card-content class="info-content">
+            <br><br>
+            <span class="text-label">Customer Name:</span><span> {{order.userFullName}}</span>
+            <br><br><br>
+            <span class="text-label">Customer ID:</span><span> {{order.id}}</span>
+            <br><br><br>
+            <span class="text-label">Customer Email:</span><span> {{order.userEmail}}</span>
+            <br><br><br>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card> 
+</div>
+    
+   

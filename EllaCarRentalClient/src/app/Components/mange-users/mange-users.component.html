@@ -1,0 +1,129 @@
+<!--Users Table-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--First name column-->
+  <ng-container matColumnDef="FirstName">
+    <th mat-header-cell *matHeaderCellDef> First Name</th>
+    <td mat-cell *matCellDef="let element">
+			<mat-form-field class="form-field-firstName">
+        <input [disabled]="element.isEdit" class="underline"  matInput [value]="element.firstName" [(ngModel)]="element.firstName">
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Last name column-->
+  <ng-container matColumnDef="LastName">
+    <th mat-header-cell *matHeaderCellDef> Last Name</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-lastName">
+        <input [disabled]="element.isEdit"  matInput [value]="element.lastName" [(ngModel)]="element.lastName">
+      </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--User name column-->
+  <ng-container matColumnDef="UserName">
+    <th mat-header-cell *matHeaderCellDef> User Name</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-userName">
+        <input [disabled]="element.isEdit"  matInput [value]="element.userName" [(ngModel)]="element.userName">
+      </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--ID column-->
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef> ID</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!--Date of birth column-->
+  <ng-container matColumnDef="DateOfBirth">
+    <th mat-header-cell *matHeaderCellDef> Date Of Birth</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-dateOfBirth">
+        <input matInput [disabled]="element.isEdit" [matDatepicker]="picker"  [(ngModel)]="element.dateOfBirth" (dateChange)="userDateOfBirth(element, $event)"><!--(selectedChanged)="userDateOfBirth($event,element)"-->
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker [startAt]="element.dateOfBirth" [(ngModel)]="element.dateOfBirth" ngDefaultControl  #picker ></mat-datepicker>
+      </mat-form-field>
+    </td>
+  </ng-container> 
+
+  <!--Gender column-->
+  <ng-container matColumnDef="Gender">
+    <th mat-header-cell *matHeaderCellDef> Gender</th>
+    <td mat-cell *matCellDef="let element"> 
+      <mat-form-field class="form-field-gender">
+        <mat-select [disabled]="element.isEdit"   [(ngModel)]="element.gender"  >
+          <mat-option  *ngFor="let gender of genders" [value]="gender[0]">
+            {{gender}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Email column-->
+  <ng-container matColumnDef="Email">
+    <th mat-header-cell *matHeaderCellDef> Email</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-email">
+        <input [disabled]="element.isEdit"  matInput [value]="element.email" [(ngModel)]="element.email">
+      </mat-form-field> 
+    </td>
+  </ng-container>
+
+  <!--Role Type column-->
+  <ng-container matColumnDef="RoleType">
+    <th mat-header-cell *matHeaderCellDef> Role Type</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="form-field-roleType">
+        <mat-select [disabled]=true  [(ngModel)]="element.roleType"  >
+          <mat-option  *ngFor="let role of roles" [value]="role[0]">
+            {{role}} 
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Profile Picture column-->
+  <ng-container matColumnDef="Image">
+    <th mat-header-cell *matHeaderCellDef>Profile Picture</th>
+    <td mat-cell *matCellDef="let element"> 
+      <img [src]="element.image ? element.image : './assets/images/profile-placeholder.png'"   [matTooltipDisabled]="element.isEdit" matTooltip="Click to update"  class="user-image"  type='file'  (click)="!element.isEdit && fileInput.click()"  /> 
+      <input hidden (change)="onSelectFile($event,element)" #fileInput type="file" id="file">
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> 
+      <!--Add new user button-->
+      <button matTooltip="Add user" mat-icon-button color="primary" >
+        <mat-icon mat-dialog-close class="add-icon" (click)="addUser()">add_box</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let element"> 
+      <!--Delete user button -->
+      <button mat-icon-button matTooltip="Delete user" color="warn" (click)="deleteUser(element)">
+        <mat-icon >delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" >
+        <!-- Edit user button -->
+        <mat-icon  matSuffix matTooltip="Edit user" class="edit-icon"  *ngIf="!element.icon"  (click)="element.isEdit = !element.isEdit;element.icon = true">edit</mat-icon>
+        <!--update user button -->
+        <mat-icon  matSuffix matTooltip="Update user" *ngIf="element.icon"   (click)="updateUser(element)" >done_outline</mat-icon>
+        <!--close edit user button -->
+        <mat-icon  matSuffix matTooltip="Close" *ngIf="element.icon" (click)="element.isEdit = !element.isEdit;element.icon = false">close</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+      
+  <!--Define the row templates-->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table> 
+
+<!--Set page numbering-->
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>

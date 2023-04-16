@@ -1,0 +1,122 @@
+<!--Title-->
+<h1 class="register">My Account</h1> 
+<div id="wrapper" class="register-form">
+  <div class="fields-form">
+    <!--Material card format -->
+    <mat-card-content>
+      <!--Set form group -->
+      <form class="my-form" [formGroup]="fg">
+        <!--First name field -->
+        <mat-form-field class="full-width"  (input)="SelectedValue('firstName',$event.target.value)">
+          <mat-label>First Name</mat-label>
+          <input  matInput  placeholder="First name" [value]="form.firstName"  formControlName="firstNameFormControl" #firstName   required>
+          <mat-error *ngIf="fg.get('firstNameFormControl').hasError('pattern')">
+            <strong>English letters only</strong>
+          </mat-error>
+          <mat-error *ngIf="fg.get('firstNameFormControl').hasError('required')">
+            First Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!--Last name field -->
+        <mat-form-field  class="full-width"  (input)="SelectedValue('lastName',$event.target.value)">
+          <mat-label>Last Name</mat-label>
+          <input  matInput  placeholder="Last Name" [value]="form.lastName" formControlName="lastNameFormControl" #lastName [errorStateMatcher]="matcher" required>
+          <mat-error *ngIf="fg.get('lastNameFormControl').hasError('pattern')">
+            <strong>English letters only</strong>
+          </mat-error>
+          <mat-error *ngIf="fg.get('lastNameFormControl').hasError('required')">
+            Last Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field> 
+        <!--ID field -->
+        <mat-form-field  class="full-width"  hintLabel="Max 9 characters" (input)="SelectedValue('id',$event.target.value)">
+          <mat-label>ID</mat-label>
+          <input  matInput  placeholder="id" [value]="form.id" #input formControlName="IDFormControl"  [errorStateMatcher]="matcher"    maxlength="9"  required>
+          <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+          <mat-error *ngIf="fg.get('IDFormControl').hasError('pattern')">
+            <strong>Digits only</strong>
+          </mat-error>
+          <mat-error *ngIf="fg.get('IDFormControl').hasError('required')">
+            ID is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field> 
+        <!--User name field -->
+        <mat-form-field  class="full-width"  (input)="SelectedValue('userName',$event.target.value)">
+          <mat-label>User Name</mat-label>
+          <input  matInput  placeholder="User Name" [value]="form.userName" formControlName="userNameFormControl" #userName [errorStateMatcher]="matcher"  required>
+          <mat-error *ngIf="fg.get('userNameFormControl').hasError('pattern')">
+            <strong>White spaces are invalid</strong>   
+          </mat-error>
+          <mat-error *ngIf="fg.get('userNameFormControl').hasError('required')">
+            User Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!--Email field -->
+        <mat-form-field  class="full-width"  (input)="SelectedValue('email',$event.target.value)">
+          <mat-label>Email</mat-label>
+          <input  matInput  placeholder="Email"  [value]="form.email" [errorStateMatcher]="matcher" formControlName="emailFormControl"  required>
+          <mat-error *ngIf="fg.get('emailFormControl').hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="fg.get('emailFormControl').hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!--Password field -->
+        <mat-form-field  class="full-width"  (input)="SelectedValue('password',$event.target.value)">
+          <mat-label>Password</mat-label>
+          <input  matInput  placeholder="Password" [value]="form.password" [type]="hide ? 'password' : 'text'" [errorStateMatcher]="matcher" formControlName="passwordFormControl" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="fg.get('passwordFormControl').hasError('pattern')">
+            <strong>White spaces are invalid</strong>   
+          </mat-error>
+          <mat-error *ngIf="fg.get('passwordFormControl').hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field> 
+        <!--Gender field -->
+        <label >Gender:</label>
+        <mat-radio-group required  [(ngModel)]="form.gender" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button  value="M">Male</mat-radio-button>
+          <mat-radio-button  value="F">Female</mat-radio-button>
+          <mat-radio-button  value="O">Other</mat-radio-button>
+        </mat-radio-group>
+        <mat-error [ngStyle]="{'font-size': '75%'}" *ngIf="!form.gender" >
+            Gender is <strong>required</strong>
+        </mat-error>
+        <div *ngIf="router.url.indexOf('Managment') > -1" >
+          <!--Role type field -->
+          <label >Role Type:</label>
+          <mat-radio-group required  [(ngModel)]="form.roleType" [ngModelOptions]="{standalone: true}">
+            <mat-radio-button  value="C">Customer</mat-radio-button>
+            <mat-radio-button  value="M">Manager</mat-radio-button>
+            <mat-radio-button  value="A">Admin</mat-radio-button>
+          </mat-radio-group>
+          <mat-error [ngStyle]="{'font-size': '75%'}" *ngIf="!form.roleType" >
+            Role Type is <strong>required</strong>
+          </mat-error>
+        </div>
+        <!--Date of birth field -->
+        <mat-form-field>
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" [value]="form.dateOfBirth" [max]="maxDate" placeholder="Date of Birth" (dateChange)="addDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions> 
+      <!--Update account button -->
+      <button  mat-raised-button (click)="updateAccount()" color="primary" class="registerButton">Update Account</button>
+      <!--Close dialog page button -> show only if user came from managment pages -->
+      <button *ngIf="router.url.indexOf('Managment') > -1"  mat-raised-button id="close-btn" color="warn" (click)="dialog.closeAll()">Close</button>
+    </mat-card-actions>
+  </div>
+  <div class="picture-div"> 
+    <!--User Image -->
+    <img class="profile-picture" *ngIf="form.image"  [src]="form.image" id="selected-image"/>
+    <!--Upload new user image -->
+    <button id="btn-upload-pic" class="file-button" mat-raised-button (click)="uploadFile()" color="primary">Profile Picture</button>
+  </div>
+  <input [hidden]="true"  id="btn-uploadfile" type='file'   #fileInput (change)="onSelectFile($event)">
+</div>   

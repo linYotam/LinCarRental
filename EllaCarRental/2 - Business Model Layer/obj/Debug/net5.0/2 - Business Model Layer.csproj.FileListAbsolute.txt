@@ -1,0 +1,29 @@
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\2 - Business Model Layer.deps.json
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\ref\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\2 - Business Model Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\1 - Data Access Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\1 - Data Access Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.csproj.AssemblyReference.cache
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.AssemblyInfoInputs.cache
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.AssemblyInfo.cs
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.csproj.CoreCompileInputs.cache
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\ref\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.csproj.CopyComplete
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\2 - Business Model Layer.deps.json
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\ref\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\2 - Business Model Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\1 - Data Access Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\bin\Debug\net5.0\1 - Data Access Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.csproj.AssemblyReference.cache
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.AssemblyInfoInputs.cache
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.AssemblyInfo.cs
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.csproj.CoreCompileInputs.cache
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\ref\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\2 - Business Model Layer\obj\Debug\net5.0\2 - Business Model Layer.pdb

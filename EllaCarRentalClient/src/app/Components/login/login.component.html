@@ -1,0 +1,44 @@
+<mat-card>
+  <!--Title-->
+  <h1 class="login">Login</h1>
+  <mat-card-content>
+    <!--Login form-->
+    <form>
+      <p>   
+        <!--Email-->
+        <mat-form-field>
+          <input type="text" matInput placeholder="Email" [formControl]="whiteSpacesValidationEmail" #email
+          [errorStateMatcher]="matcher" >
+          <!--Show error if there are spaces-->
+          <mat-error *ngIf="whiteSpacesValidationEmail.hasError('pattern')">
+            <strong>Remove white spaces!</strong>
+          </mat-error>
+          <!--Show error if email is not valid-->
+          <mat-error *ngIf="whiteSpacesValidationEmail.hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <!--Show error if field is empty-->
+          <mat-error *ngIf="whiteSpacesValidationEmail.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <!--Password-->
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" [formControl]="whiteSpacesValidationPassword" #password [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'" >
+          <mat-icon matSuffix class="passIcon" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <!--Show error if there are spaces-->
+          <mat-error *ngIf="whiteSpacesValidationPassword.hasError('pattern')">
+            <strong>Remove white spaces!</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>  
+      <!--Login button -> send email and password to DB for conformation-->
+      <button (click)="loginUser(email.value,password.value)" mat-raised-button class="button">Sign in</button>  
+      <!--If there is no conformation -> show error-->
+      <span *ngIf="showFailedLogin" style="text-align: center;display: block;color: red;padding-top: 1em;">{{errorMessage}}</span>  
+    </form>
+  </mat-card-content>
+</mat-card> 
+  

@@ -1,0 +1,77 @@
+
+
+.mat-card{
+    margin-top: 2em;
+    margin-right: 1em;
+    //margin-bottom: 1em;
+    margin-left: 2em;
+    width: 300px;
+    border: 1px solid black;
+    float: left;
+    text-align: center;
+}
+
+.header {
+    text-align:center; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: coral;
+    height: 50px;
+}
+
+.title-text {
+    font-size: 30px;
+    font-family: fantasy;
+    vertical-align: middle;
+    padding-top: 0.4%;
+  }
+
+
+.car-image{
+    height: 130px;
+    //object-fit: contain;
+    width: 200px;
+    margin-top: 0px !important;
+}
+
+.gearImage{
+    height: 50px;
+}
+ 
+.image-text-wrapper{
+    display:inline-block;
+    align-self: center;
+    vertical-align: middle;
+}
+.gear-text{
+    display:inline-block;
+    vertical-align: middle;
+    padding-left: 0.5em;
+}
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+}
+.wrapper-page{
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+  }
+
+  .car-action {
+      margin-bottom: -8% !important;
+  }
+ 
+
+  .panel-title {
+    font-size: 20px;
+    font-family: fantasy;
+    vertical-align: middle;
+    padding-top: 0.4%;
+    justify-content: center;
+    margin-right: 0px !important;
+    margin-left: 10px;
+  }
+

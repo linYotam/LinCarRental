@@ -1,0 +1,75 @@
+<div class="wrapper-page">
+
+  <mat-card class="all-card">
+
+    <mat-card-header class="table-header">
+      <!--Title-->
+      <p class="title-text">Reserve Preview</p>
+    </mat-card-header>
+
+    <!--car image-->
+    <img mat-card-image class='car-image' [src]="carInforamtion.image">
+
+    <!--Rental car details-->
+    <mat-card-content>
+      <h1 class = "hfont">Rental Details</h1>
+      <h3  style="color: coral; font-weight: bold; font-size: larger;">Vehicle</h3>
+      <p>
+        <span style="font-weight: bold;">Car: </span>
+        {{carInforamtion.manufacturer}} {{carInforamtion.model}} {{carInforamtion.year}}
+      </p>
+      <p>
+        <span style="font-weight: bold;">Car Number: </span> 
+        {{relevantCar.carNumber | CarNumber}}
+      </p>
+      <p>
+        <span style="font-weight: bold;">Mileage: </span> 
+        {{relevantCar.mileage | number: '2.'}}
+      </p>
+      <div class="image-text-wrapper">
+        <img [src]="setGearImage(carInforamtion.gear.toString())" class="gearImage">
+      </div>
+      <div class="gear-text" [innerHTML]="carInforamtion.gear === 'A' ? 'Automatic' : 'Manually'"></div>
+      <h3 style="color: coral; font-weight: bold; font-size: larger;">Dates & Times</h3>
+      <p>
+        <span style="font-weight: bold;">Pick-Up Time: </span> 
+        {{carInforamtion.rentPeriod.begin | date:'mediumDate'}} 
+      </p>
+      <p>
+        <span style="font-weight: bold;">Return Time: </span> 
+        {{carInforamtion.rentPeriod.end | date:'mediumDate'}} 
+      </p>
+      <h3 style="color: coral; font-weight: bold; font-size: larger;">Pick-Up/Return Location</h3>
+      <p>
+        <span style="font-weight: bold;">Pick-Up Location: </span>
+        {{branchInfo.city}},{{branchInfo.address}}
+      </p>
+      <p>
+        <span style="font-weight: bold;">Return Location: </span>
+        {{branchInfo.city}},{{branchInfo.address}}
+      </p>
+
+      <h3 style="color: coral; font-weight: bold; font-size: larger;">Price</h3>
+      <p>
+        <span style="font-weight: bold;">Price for day: </span>
+        {{carInforamtion.costPerDay | currency:'USD':'symbol'}} 
+      </p>
+      <p>
+        <span style="font-weight: bold;">Price for delay: </span>
+        {{carInforamtion.costPerDayDelay | currency:'USD':'symbol'}} 
+      </p>
+      <p>
+        <span style="font-weight: bold;">Estimated Total: </span>
+        {{daysRange * carInforamtion.costPerDay | currency:'USD':'symbol'}} 
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <!--Order car button-->
+        <button mat-raised-button class="rent-btn"  (click)="reserveCar(relevantCar)">Reserve Now</button>
+        <!--Cancel order-->
+        <button mat-raised-button class="cancel-btn" (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card> 
+</div>  
+ 

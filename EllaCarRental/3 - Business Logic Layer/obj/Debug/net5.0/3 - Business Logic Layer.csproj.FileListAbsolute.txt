@@ -1,0 +1,33 @@
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\3 - Business Logic Layer.deps.json
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\ref\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\3 - Business Logic Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\1 - Data Access Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\2 - Business Model Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\1 - Data Access Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.csproj.AssemblyReference.cache
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.AssemblyInfoInputs.cache
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.AssemblyInfo.cs
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.csproj.CoreCompileInputs.cache
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.csproj.CopyComplete
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\ref\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\Ella Lin Car Rental Project\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\3 - Business Logic Layer.deps.json
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\ref\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\3 - Business Logic Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\1 - Data Access Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\2 - Business Model Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\2 - Business Model Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\bin\Debug\net5.0\1 - Data Access Layer.pdb
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.csproj.AssemblyReference.cache
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.AssemblyInfoInputs.cache
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.AssemblyInfo.cs
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.csproj.CoreCompileInputs.cache
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\ref\3 - Business Logic Layer.dll
+C:\Users\linyo\OneDrive\Desktop\EllaLinCarRentalProject\EllaCarRental\3 - Business Logic Layer\obj\Debug\net5.0\3 - Business Logic Layer.pdb

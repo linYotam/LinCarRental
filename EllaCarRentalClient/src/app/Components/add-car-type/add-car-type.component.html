@@ -1,0 +1,98 @@
+
+
+<div id="wrapper">
+
+  <!--Title-->
+  <mat-card-header>
+    <div class="table-header"><p class="title-text">Add a new Car Type</p></div>
+  </mat-card-header>
+
+  <!--Form group-->
+  <mat-card-content class="card-content">
+    <form class="my-form" [formGroup]="fg">
+
+      <!--Car Manufacturer-->
+      <mat-form-field class="full-width" >
+        <mat-label>Manufacturer</mat-label>
+        <input  matInput  placeholder="Manufacturer"  formControlName="ManufacturerFormControl"  [(ngModel)]="form.manufacturer"  required>
+        <!--Show error if there are no english letters only-->
+        <mat-error *ngIf="fg.get('ManufacturerFormControl').hasError('pattern')">
+          <strong>English letters only</strong>
+        </mat-error>
+        <!--Show error if field is empty-->
+        <mat-error *ngIf="fg.get('ManufacturerFormControl').hasError('required')">
+          Manufacturer is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Car model-->
+      <mat-form-field  class="full-width"  >
+        <mat-label>Model</mat-label>
+        <input  matInput  placeholder="Model" formControlName="ModelFormControl" [errorStateMatcher]="matcher"  [(ngModel)]="form.model" required>
+        <!--Show error if there are spaces-->
+        <mat-error *ngIf="fg.get('ModelFormControl').hasError('pattern')">
+          <strong>Remove white spaces</strong>
+        </mat-error>
+        <!--Show errors if field is empty-->
+        <mat-error *ngIf="fg.get('ModelFormControl').hasError('required')">
+          Model is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Cost per day-->
+      <mat-form-field  class="full-width">
+        <mat-label>Cost Per Day</mat-label>
+        <input  matInput  placeholder=" CostPerDay" #input formControlName="CostPerDayFormControl" type="number"  [(ngModel)]="form.costPerDay" [errorStateMatcher]="matcher"  required>
+        <!--Show error if there are no english letters only-->
+        <mat-error *ngIf="fg.get('CostPerDayFormControl').hasError('pattern')">
+          <strong>Digits only</strong>
+        </mat-error>
+        <!--Show error if field is empty-->
+        <mat-error *ngIf="fg.get('CostPerDayFormControl').hasError('required')">
+          Cost Per Day is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Cost per day delay-->
+      <mat-form-field  class="full-width" >
+        <mat-label>Cost Per Day Delay</mat-label>
+        <input  matInput  placeholder="Cost Per Day Delay" formControlName="CostPerDayDelayFormControl" type="number" [(ngModel)]="form.costPerDayDelay" [errorStateMatcher]="matcher"  required>
+        <!--Show error if there are no digits only-->
+        <mat-error *ngIf="fg.get('CostPerDayDelayFormControl').hasError('pattern')">
+          <strong>Digits only</strong>
+        </mat-error> 
+        <!--Show error if field is empty-->
+        <mat-error *ngIf="fg.get('CostPerDayDelayFormControl').hasError('required')">
+          Cost Per Day Delay is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Year-->
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose year" value="form.year" (ngModelChange)="addYearToForm($event)" [max]="maxDate" formControlName="DateFormControl">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <!--Show material datepicker to pick year-->
+        <mat-datepicker #picker (yearSelected)="addDateToForm($event);picker.close()" startView="multi-year"></mat-datepicker>
+      </mat-form-field>
+
+      <!--Gear-->
+      <label >Gear:</label>
+      <mat-radio-group required  [(ngModel)]="form.gear" [ngModelOptions]="{standalone: true}">
+        <mat-radio-button  value="A">Automatic</mat-radio-button>
+        <mat-radio-button  value="M">Manually</mat-radio-button>
+      </mat-radio-group>
+      <!--Show error if radio buttons are empty-->
+      <mat-error [ngStyle]="{'font-size': '75%'}" *ngIf="!form.gear" >
+          Gear is <strong>required</strong>
+      </mat-error>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <!--Add new car button-->
+    <button  mat-raised-button color="primary"  (click)="addCarType()" >Add New Car Type</button>
+    <!--Close dialog page-->
+    <button mat-raised-button id="close-btn" color="warn" (click)="dialog.closeAll()">Close</button>
+  </mat-card-actions>
+</div>

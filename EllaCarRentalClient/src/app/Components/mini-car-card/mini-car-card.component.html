@@ -1,0 +1,21 @@
+<!--List of favorites cars-->
+<mat-card *ngFor='let car of favoriteCars'>
+
+  <!--basic car info-->
+    <mat-card-header>
+      <mat-card-title>{{car.manufacturer}} {{car.model}} {{car.year}} <br> {{car.carNumber|CarNumber}}<hr></mat-card-title>
+    </mat-card-header>
+  
+    <!--Car image-->
+    <img mat-card-image class='car-image' src="{{car.image}}">
+  
+    <!--card actions-->
+    <mat-card-actions> 
+      <!--Rent car button-->
+      <button  class="rent-car" *ngIf="rentPeriod" class="rent-btn" mat-raised-button color="primary" (click)="rentCar(car)">Rent</button>
+      <!--Remove car from favorites button-->
+      <button  class="rent-car"  class="remove-btn" mat-raised-button color="primary" (click)="removeFromFavorites(car)">Remove</button>
+    </mat-card-actions> 
+
+</mat-card>
+ 

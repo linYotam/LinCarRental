@@ -1,0 +1,72 @@
+
+
+<div id="wrapper">
+
+  <!--Area Title-->
+    <mat-card-header>
+      <div class="table-header"><p class="title-text">Add a new Branch</p></div>
+    </mat-card-header>
+  
+    <!--Set Form group-->
+    <mat-card-content class="card-content">
+      <form class="my-form" [formGroup]="fg">
+  
+        <!--Address-->
+        <mat-form-field class="full-width">
+          <mat-label>Address</mat-label>
+          <input  matInput  placeholder="Address"  formControlName="AddressFormControl"  [(ngModel)]="form.address"  required>
+          <mat-error *ngIf="fg.get('AddressFormControl').hasError('required')">
+            Address is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+
+        <!--Latitude-->
+        <mat-form-field class="full-width" >
+            <mat-label>Latitude</mat-label>
+            <input  matInput  placeholder="Latitude"  formControlName="LatitudeFormControl"  [(ngModel)]="form.Latitude"  required>
+            <mat-error *ngIf="fg.get('LatitudeFormControl').hasError('pattern')">
+                <strong>Longitude must include numbers only!</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!--Longitude-->
+        <mat-form-field class="full-width">
+            <mat-label>Longitude</mat-label>
+            <input  matInput  placeholder="Longitude"  formControlName="LongitudeFormControl" [(ngModel)]="form.longitude" required>
+            <mat-error *ngIf="fg.get('LongitudeFormControl').hasError('required')">
+              <strong>Longitude must include numbers only!</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!--Branch Name-->
+        <mat-form-field class="full-width" >
+            <mat-label>Branch Name</mat-label>
+            <input  matInput  placeholder="Name"  formControlName="NameFormControl"  [(ngModel)]="form.name"  required>
+            <mat-error *ngIf="fg.get('NameFormControl').hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!--City Name--> 
+        <mat-form-field class="full-width" >
+            <mat-label>Branch City</mat-label>
+            <input  matInput  placeholder="City"  formControlName="CityFormControl"  [(ngModel)]="form.city"  required>
+            <mat-error *ngIf="fg.get('CityFormControl').hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+ 
+      </form>
+    </mat-card-content> 
+  
+    <mat-card-actions> 
+      <!--Search Location according to city name/address-->
+      <button  mat-raised-button color="primary"  (click)="search()" >Search Location</button>
+      <!--Add new Branch-->
+      <button  mat-raised-button  class="add-btn" (click)="addBranch()" >Add New Branch</button>
+      <!--Close dialog page-->
+      <button mat-raised-button id="close-btn" color="warn" (click)="dialog.closeAll()">Close</button>
+      
+    </mat-card-actions>
+  </div>
+  

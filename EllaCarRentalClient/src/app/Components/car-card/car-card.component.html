@@ -1,0 +1,31 @@
+<!--Create list of car cards -->
+<mat-card *ngFor='let car of carsInput | filterByMultiArgs: filter:[{Gear:gear},{Manufacturer:manufacturer},{Model:model},{Year:year}]' >
+
+  <!--Show basic car info-->
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon class="red-icon" (click)="toggleToFavorites(car)">{{car.favoriteIcon}}</mat-icon></div>
+    <mat-card-title style="font-weight: bold;">{{car.manufacturer}} {{car.model}} {{car.year}} <hr></mat-card-title>
+    <mat-card-subtitle><span style="color: black; font-weight: bold;">Car Number: </span><span style="color: coral; font-weight: bold;"> {{car.carNumber| CarNumber}}</span></mat-card-subtitle>
+    <mat-card-subtitle><span style="color: black; font-weight: bold;">Cost Per day: </span><span style="color: coral; font-weight: bold;">{{car.costPerDay | currency:'USD':'symbol'}}</span></mat-card-subtitle>
+    <mat-card-subtitle><span style="color: black; font-weight: bold;">Delay pay: </span><span style="color: coral; font-weight: bold;">{{car.costPerDayDelay | currency:'USD':'symbol'}} </span></mat-card-subtitle>
+  </mat-card-header>
+
+  <!--Show car image-->
+  <img mat-card-image class='car-image' src="{{car.image}}">
+
+  <!--Show more car info-->
+  <mat-card-content class="car-content">
+    <p><span>Gear: </span><span style="color: coral;">{{car.gear === 'A' ? 'Automatic' : 'Manually'}}</span></p>
+    <p><span>Mileage: </span><span style="color: coral;">{{car.carMileage|number}}</span></p>
+    <p><span>Branch Name: </span><span style="color: coral;">{{car.branchName}}</span></p>
+    <p><span>Address: </span><span style="color: coral;">{{car.branchCity + " - " + car.branchAddress}}</span></p>
+  </mat-card-content>
+
+  <mat-card-actions> 
+    <!--Show rent car button-->
+      <button  class="rent-car" *ngIf="rentPeriod" mat-raised-button color="primary" (click)="rentCar(car,rentPeriod)">Rent</button>
+  </mat-card-actions> 
+ 
+</mat-card>
+  <!--Show the no results section if there are no cars available for rent by filter -->
+  <p class="no-results" *ngIf="!(carsInput | filterByMultiArgs: filter:[{Gear:gear},{Manufacturer:manufacturer},{Model:model},{Year:year}])?.length" style="color:red;" >Sorry! We couldn't find any results matching your search</p>

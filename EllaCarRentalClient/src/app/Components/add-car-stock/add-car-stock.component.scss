@@ -1,0 +1,106 @@
+.my-form{
+    min-width: 150px;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .table-header { 
+    background-color: coral;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10%;
+    display: table; 
+  }
+
+  .title-text {
+    font-size: 30px;
+    font-family: fantasy;
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell; 
+  }
+
+  .fields-form {
+    float: left;
+    width: 50%;
+    margin-top: 1%;
+  }
+
+  .mat-form-field {
+    width:400px !important;
+  }
+
+  .mat-form-field-wrapper {
+    width:400px !important;
+  }
+  
+  .profile-picture {
+    position: relative;
+    z-index: 1;
+    width: 370px;
+    height:230px;
+    background-size: contain;
+    border-radius: 1em;
+    border: solid 1px black;
+    margin-top: 10%;
+    margin-right: 3%;
+  } 
+  
+  .file-button {
+    position: relative;
+    z-index: 1;
+    margin-right: 16%;
+    margin-top: 2%;
+    float: right;
+  }
+  
+  .registerButton {
+    margin-top: 3%;
+    margin-left: 6% !important;
+  }  
+   
+  .full-width {
+    width: 100%;
+  }
+
+ 
+:host {
+    display: flex;
+    justify-content: center;
+    //margin: 100px 0px;
+  }
+  
+  .mat-form-field {
+    width: 60%;
+    min-width: 300px;
+  }
+  
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-radio-button{
+      padding: 1%;
+  }
+
+  #selected-image{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    float: right;
+  }
+
+  #btn-upload-pic{
+    margin-bottom: 5%;
+  }
+
+  .image-wrapper{
+    padding-top: 1em;
+  }
+
+  #close-btn{
+    margin-left: 1em;
+  }

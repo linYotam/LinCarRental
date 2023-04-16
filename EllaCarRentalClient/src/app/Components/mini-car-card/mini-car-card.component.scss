@@ -1,0 +1,77 @@
+
+.mat-card{
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    //float: left;
+    text-align: center;
+    width: 85%;
+    background-color: black;
+    color: white;
+}
+
+.mat-card:hover {
+    box-shadow: 0 8px 8px 8px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+    transform: translate3d(0,0,0);
+    transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}
+
+.mat-card-title {
+    font-size: 20px;
+}
+
+.mat-card-header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    width: 100%;
+    display: flex; 
+    justify-content: center 
+}
+
+.car-image{
+    height: auto;
+    max-width: 225px; 
+    object-fit: contain;
+}
+ 
+.red-icon {
+    color: red !important;
+    cursor: pointer;
+}
+
+.image-text-wrapper{
+    display:inline-block;
+    align-self: center;
+    vertical-align: middle;
+}
+.gear-text{
+    display:inline-block;
+    vertical-align: middle;
+    padding-left: 0.5em;
+    margin-top: 4%;
+}
+
+.gearImage{
+    height: 50px;
+    width: auto;
+}
+
+.no-results {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  .remove-btn{
+      background-color: red;
+      width: 80px;
+  }
+
+  .rent-btn {
+      background-color: green;
+      width: 80px;
+  }
+
+

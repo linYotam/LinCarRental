@@ -1,0 +1,86 @@
+
+<!--Table of orders-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--Car number column-->
+  <ng-container matColumnDef="CarNumber">
+    <th mat-header-cell *matHeaderCellDef>CarNumber</th>
+    <td mat-cell *matCellDef="let element">
+      {{element.carNumber}}
+    </td>
+  </ng-container>
+
+<!--Rent by column-->
+  <ng-container matColumnDef="UserID">
+    <th mat-header-cell *matHeaderCellDef>Rent By</th>
+    <td mat-cell *matCellDef="let element">
+      {{element.userId}}
+    </td>
+  </ng-container>
+
+  <!--Start time of rent column-->
+  <ng-container matColumnDef="StartTime">
+    <th mat-header-cell *matHeaderCellDef> Start Time</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field >
+        <input matInput [disabled]="element.isEdit" [matDatepicker]="pickerStart"  [(ngModel)]="element.startTime" >
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker [startAt]="element.startTime" [(ngModel)]="element.startTime" ngDefaultControl  #pickerStart ></mat-datepicker>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--End time of rent column-->
+  <ng-container matColumnDef="EndTime">
+    <th mat-header-cell *matHeaderCellDef> End Time</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field >
+          <input matInput [disabled]="element.isEdit" [(ngModel)]="element.endTime" [matDatepicker]="pickerEnd"  > <!--value="element.endTime" (ngModelChange)="addEndTime($event, element)"-->
+          <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker [startAt]="element.endTime" [(ngModel)]="element.endTime" ngDefaultControl  #pickerEnd ></mat-datepicker> <!--(yearSelected)="addDateToElement($event, element);pickerEnd.close()"-->
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <!--Return time of order column-->
+  <ng-container matColumnDef="ReturnTime">
+    <th mat-header-cell *matHeaderCellDef> Return Time</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field >
+        <input matInput [disabled]="element.isEdit" [matDatepicker]="pickerReturn"  [(ngModel)]="element.returnTime" >
+        <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
+        <mat-datepicker [startAt]="element.returnTime" [(ngModel)]="element.returnTime" ngDefaultControl  #pickerReturn ></mat-datepicker>
+      </mat-form-field>
+    </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> 
+      <!--Add a new order button-->
+      <button matTooltip="Add order" mat-icon-button color="primary" >
+        <mat-icon class="add-icon" mat-dialog-close (click)="addOrder()">add_box</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let element"> 
+      <!--Delete order button-->
+      <button matTooltip="Delete Order" mat-icon-button color="warn" (click)="deleteOrder(element)">
+        <mat-icon >delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" >
+        <!--Edit order -->
+        <mat-icon class="edit-icon" matSuffix matTooltip="Edit Order"  *ngIf="!element.icon"  (click)="element.isEdit = !element.isEdit;element.icon = true">edit</mat-icon>
+        <!--Update order -->
+        <mat-icon  matSuffix matTooltip="Update Order" *ngIf="element.icon"   (click)="updateOrder(element)" >done_outline</mat-icon>
+        <!--Close Edit order -->
+        <mat-icon  matSuffix matTooltip="Close" *ngIf="element.icon" (click)="element.isEdit = !element.isEdit;element.icon = false">close</mat-icon>
+      </button>
+    </td>
+  </ng-container> 
+  
+  <!--Define the row templates-->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!--Set page numbering-->
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator> 

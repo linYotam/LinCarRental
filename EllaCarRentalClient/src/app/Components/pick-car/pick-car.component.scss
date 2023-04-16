@@ -1,0 +1,130 @@
+.mat-form-field{
+    padding-left:  1.5em;
+    padding-top: 1.5em;
+    font-weight: bold !important;
+}
+
+.wrapper-page{
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+  }
+
+.filter {
+    background-color: coral;
+}
+
+.mat-card{
+    margin-top: 2em;
+    margin-right: 1em;    
+    width: 20%;
+    height: 20%;
+    display: inline-block;
+    text-align: center;
+}
+
+.mat-card-image{
+    height: 200px;
+    object-fit: contain;
+}
+
+
+.mat-expansion-panel-header-title {
+    justify-content: center !important;
+    font-size: 30px;
+    font-family: fantasy;
+} 
+
+.headerIcon {
+    margin-top: 0.5%;
+}
+
+::ng-deep .mat-expansion-panel-body {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-expansion-panel{
+    margin-top: 2em;
+}
+
+.mat-raised-button{
+    margin-left: 1.5em;
+    background-color: black;
+    color: white;
+}
+
+.mat-icon{
+    padding-left:0.5em; 
+}
+
+.carsTable {
+    width: 100%;
+    margin-left: 4.5%;
+} 
+
+.pick-car-container {
+    width: 100%;
+    height: 94%;
+  }
+  
+  .favorite-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .favorite-sidenav {
+    padding-left: 20px;
+    border-right: 2px solid black;
+  }
+
+  .mat-drawer-content{
+    margin-left: 0px !important;
+  }
+
+  .side-bar-title {
+    justify-content: center !important;
+    font-size: 20px;
+    font-family: fantasy;
+    text-align: center;
+  }
+
+  .title-divider {
+    border: 2px solid black;
+  }
+
+  .search-btn {
+      cursor: pointer;
+      width: 126px !important;
+      text-align: center;
+      margin-left: 20px !important;
+  }
+
+  .filter-btn {
+    cursor: pointer;
+    width: 126px !important;
+    text-align: center;
+    margin-right: 5px !important;
+    margin-left: 0px !important;
+  }
+
+  .fav-btn {
+    cursor: pointer;
+    width: 126px !important;
+    text-align: center;
+    margin-right: 15px !important;
+  }
+
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent; 
+}
+
+.btn-area {
+  text-align: center;
+}
+

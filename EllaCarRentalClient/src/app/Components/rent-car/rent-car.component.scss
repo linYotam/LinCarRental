@@ -1,0 +1,76 @@
+
+.mat-card{
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.table-header {
+    background-color: coral;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    height: 5%;
+    display: table; 
+  }
+
+  .gearImage{
+    height: 50px;
+    width: auto;
+}
+
+  .title-text {
+    font-size: 30px;
+    font-family: fantasy;
+    text-align:center; 
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .hfont {
+    font-family: fantasy;
+  }
+
+.car-image{
+    height: 200px;
+    object-fit: contain;
+    margin-top: 1%;
+}
+ 
+
+.image-text-wrapper{
+    display:inline-block;
+    align-self: center;
+    vertical-align: middle;
+}
+.gear-text{
+    display:inline-block;
+    vertical-align: middle;
+    padding-left: 0.5em;
+    margin-top: 1%;
+}
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+}
+.wrapper-page{
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+  }
+
+  .cancel-btn{
+    background-color: red;
+    color: white;
+  }
+
+  .rent-btn {
+    background-color: green;
+    color: white;
+  }
+

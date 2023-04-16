@@ -1,0 +1,81 @@
+<div class="wrapper-page">
+  <div class="header">
+    <!--Title-->
+    <h3 class="title-text">My Orders</h3>
+  </div>
+
+  <!--Material accordion -> list of current orders -->
+  <mat-accordion>
+    <mat-expansion-panel expanded=true>
+
+      <!--Title of current orders panel-->
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          Current Orders
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <!--List of ordered cars cards-->
+      <mat-card *ngFor='let order of currentOrderedCars'>      
+        <!--car image-->
+        <img mat-card-image class='car-image' [src]="order.image">
+        <!--Car info -->
+        <mat-card-content>
+          <h1>Rental Details</h1>
+          <h3>Vehicle</h3>
+          <p>{{order.manufacturer}} {{order.model}} {{order.year}}</p>
+          <p>Car Number : {{order.carNumber | CarNumber}}</p> 
+          <div class="image-text-wrapper">
+            <img [src]="setGearImage(order.gear.toString())" class="gearImage">
+          </div>
+          <div class="gear-text" [innerHTML]="order.gear === 'A' ? 'Automatic' : 'Manually' " ></div>
+          <h3>Dates & Times</h3>
+          <p>Pick-Up Time : {{order.startTime | date:'mediumDate'}} </p>
+          <p >Return Time : {{order.endTime | date:'mediumDate'}} </p>
+          <p >Actual Return Time : {{order.returnTime | date:'mediumDate'}} </p>
+          <h3>Price</h3>
+          <p>For day : {{order.costPerDay | currency:'USD':'symbol'}} </p>
+          <p>For delay : {{order.costPerDayDelay | currency:'USD':'symbol'}} </p>
+          <p>Total : {{(order.diffDaysRentTime * order.costPerDay) + (order.diffDaysReturn * order.costPerDayDelay) | currency:'USD':'symbol'}} </p>
+        </mat-card-content>  
+        <mat-card-actions class="car-action"></mat-card-actions>
+      </mat-card>
+    </mat-expansion-panel>
+
+    <!--Title of historey orders panel-->
+    <mat-expansion-panel expanded=false>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          History
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+       <!--List of ordered cars history cards-->
+      <mat-card *ngFor='let order of historyOrderedCars'>
+        <!--car image-->
+        <img mat-card-image class='car-image' [src]="order.image">
+        <!--Car info -->
+        <mat-card-content>
+          <h1>Rental Details</h1>
+          <h3>Vehicle</h3>
+          <p>{{order.manufacturer}} {{order.model}} {{order.year}}</p>
+          <p>Car Number : {{order.carNumber | CarNumber}}</p> 
+          <div class="image-text-wrapper">
+            <img [src]="setGearImage(order.gear.toString())" class="gearImage">
+          </div>
+          <div class="gear-text" [innerHTML]="order.gear === 'A' ? 'Automatic' : 'Manually' " ></div>
+          <h3>Dates & Times</h3>
+          <p>Pick-Up Time : {{order.startTime | date:'mediumDate'}} </p>
+          <p >Return Time : {{order.endTime | date:'mediumDate'}} </p>
+          <p >Actual Return Time : {{order.returnTime | date:'mediumDate'}} </p>
+          <h3>Price</h3>
+          <p>For day : {{order.costPerDay | currency:'USD':'symbol'}} </p>
+          <p>For delay : {{order.costPerDayDelay | currency:'USD':'symbol'}} </p>
+          <p>Total : {{(order.diffDaysRentTime * order.costPerDay) + (order.diffDaysReturn * order.costPerDayDelay) | currency:'USD':'symbol'}} </p>
+        </mat-card-content>
+    
+        <mat-card-actions class="car-action"></mat-card-actions>
+    
+      </mat-card>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

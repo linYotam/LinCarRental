@@ -1,0 +1,57 @@
+.my-form{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+   
+  .full-width {
+    width: 100%;
+  }
+
+  .table-header {
+    background-color: coral;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10%;
+    display: table;  
+  }
+
+  .title-text {
+    font-size: 30px;
+    font-family: fantasy;
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell; 
+  }
+ 
+  :host {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+    border-top: 1em solid transparent !important
+  }
+
+  .card-content {
+    margin-bottom: 20px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-radio-button{
+      padding: 1%;
+  }
+
+
+  #close-btn{
+    margin-left: 1em;
+  }

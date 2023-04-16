@@ -1,0 +1,155 @@
+
+.return-header{
+    width: 95%;
+    margin-left: 2.55%;
+    border-collapse: collapse;
+  }
+ 
+.filter {
+    background-color: coral;
+    height: 130px;
+    margin-left:3px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.add-row {
+    height: 10%;
+}
+
+.panel-text {
+    color: black !important;
+    font-size: 30px;
+    font-family: fantasy;
+    text-align: center;
+    margin-top: 10px;
+    height: 45%;
+}
+
+.search-car-input {
+    width: 200px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.mat-form-field{
+    padding-left:  1.5em;
+    padding-top: 1.5em;
+    font-weight: bold !important;
+} 
+
+.mat-raised-button{
+    margin-left: 1.5em;
+    background-color: black;
+    color: white;
+}
+ 
+.carsTable {
+    width: 100%;
+    margin-left: 4.5%;
+}
+
+.car-number-label {
+    font-weight: bold;
+    color: black;
+    margin-right: 3px;
+}
+
+.car-number-search {
+    text-align: center;
+}
+
+.container {
+    //padding: 2em 4em;
+    height: 74.5%;
+    text-align: center;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ }
+
+
+ .container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  
+ .mat-card {
+    width: 29.8%;
+    float: left;
+    height: 95%;
+    margin: 2px;
+    background-color: black !important; 
+  }
+
+  .mat-card-image {
+      height: 350px !important;
+      width: auto;
+      max-width: 90% !important;
+  }
+  
+.card-header {
+
+    justify-content: center;
+    border-bottom: 2px solid white;
+}
+
+.proper {
+    color: white;
+    background-color: black;
+    margin-left: 1%;
+    margin-bottom: 3px;
+}
+
+.title-text {
+    justify-content: center !important;
+    font-size: 22px;
+    color: white;
+    font-family: fantasy;  
+}
+
+.info-content {
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.text-label {
+    color: coral;
+    margin-top: 2%;
+} 
+
+.gear-text{
+    display:inline-block;
+    vertical-align: middle;
+    padding-left: 0.5em;
+    margin-top: 4%;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: white !important;
+    background-color: white !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color:coral;
+  }
+
+.proper {
+    margin-left: 1%;
+}
+
+.return-button {
+    color: white !important;
+    font-weight: bold;
+    background-color: coral !important;
+    width:50%;
+    
+}
+

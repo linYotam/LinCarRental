@@ -1,0 +1,1 @@
+Scaffold-DbContext -Connection "Server=DESKTOP-P17TH39\SQLEXPRESS;Database=EllaCarRent;Trusted_Connection=True" -Provider Microsoft.EntityFrameworkCore.SqlServer -Tables Branch, CarsForRent, CarType, RentCars, Users, Favorites
